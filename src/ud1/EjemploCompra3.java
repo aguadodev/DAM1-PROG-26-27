@@ -1,32 +1,28 @@
 package ud1;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Scanner;
 
-/** @author Matías Centeno Plá */
+/** @author Juan **/
 
 public class EjemploCompra3 {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
+        final double IVA = 0.21;
 
-        System.out.println("Indica el precio del producto");
-        double precio = sc.nextDouble();
+        System.out.print("Precio del producto: ");
+        double precioProducto = sc.nextDouble();
 
-        System.out.println("Indica las unidades que se van a comprar");
-        int cantidad = sc.nextInt();
+        System.out.print("Número de unidades: ");
+        double cantidadProducto = sc.nextInt();;
         sc.close();
-        System.out.println("==================");
 
-        double precioCalculado = cantidad * precio;
-        System.out.printf("La cantidad total es de %.2f euros", precioCalculado);
-        System.out.println();
-        System.out.println("Fecha: " + LocalDate.now());
-        System.out.println("Hora: " + LocalTime.now());
-        
-      
-
-        
+        double importeTotal = precioProducto * cantidadProducto;
+        double importeIva = importeTotal * IVA;
+        double importeConIva = importeTotal + importeIva;
+        System.out.println("Importe total (sin IVA): " + String.format("%.2f",importeTotal) + " euros");
+        System.out.println("IVA: " + IVA * 100 + "%");
+        System.out.println("Importe del IVA: " + String.format("%.2f", importeIva) + " euros");
+        System.out.println("Importe total a pagar (con IVA): " + String.format("%.2f",importeConIva) + " euros.");
     }
+
 }
