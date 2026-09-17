@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class EjemploCompra3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        final double IVA = 0.21;
+        final double IVA = 0.1;
 
         System.out.print("Precio del producto: ");
         double precioProducto = sc.nextDouble();
