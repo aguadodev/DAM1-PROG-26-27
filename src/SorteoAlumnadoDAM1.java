@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SorteoAlumnadoDAM1 {
     public static void main(String[] args) {
-        final int NUM_ALUMNOS = 30;
+        final int NUM_ALUMNOS = 31;
 
         Random rnd = new Random();
         int numeroElegido = rnd.nextInt(NUM_ALUMNOS) + 1;
@@ -41,6 +41,8 @@ public class SorteoAlumnadoDAM1 {
         System.out.print(numeroElegido == 28 ? "Angel S" : "");
         System.out.print(numeroElegido == 29 ? "Darianys V" : "");
         System.out.print(numeroElegido == 30 ? "Yubay W" : "");
+        System.out.print(numeroElegido == 31 ? "Miguel L" : "");
+        
 
         System.out.println("\n");
     }
