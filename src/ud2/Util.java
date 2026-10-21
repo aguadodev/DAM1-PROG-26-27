@@ -1,6 +1,7 @@
 package ud2;
 
 public class Util {
+    // FECHAS
     public static boolean esBisiesto(int anho) {
         return anho % 400 == 0 || anho % 4 == 0 && anho % 100 != 0;
     }
@@ -23,4 +24,17 @@ public class Util {
         };
         return diasMes;
     }
+
+    // NUMEROS
+    public static boolean esPrimo(int n) {
+        if (n < 2) 
+            return false;    
+
+        for (int i = 2; i <= n / 2; i++) 
+            if (n % i == 0) 
+                return false;
+
+        return true;
+    }
+
 }

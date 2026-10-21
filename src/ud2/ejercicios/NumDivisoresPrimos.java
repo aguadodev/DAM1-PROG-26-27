@@ -1,43 +1,51 @@
 package ud2.ejercicios;
 
 import java.util.Scanner;
+
 /**
- * @author mmartbarr
  * NumDivisoresPrimos
  */
-
 public class NumDivisoresPrimos {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce un número-> ");
-        int numero = sc.nextInt();
-        sc.close();
 
+    public static boolean esPrimo(int n) {
+        boolean primo = true;
+
+        if (n < 2) {
+            primo = false;
+        } else {
+            for (int i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    primo = false;
+                }
+            }
+        }
+
+        return primo;
+    }
+
+    public static int numDivisoresPrimos(int n) {
         int contador = 0;
 
-        for (int i = 2; i <= numero; i++) {
-            if (numero % i == 0) {
-                boolean primo = true;
-                
-                for (int j = 2; j < i; j++) {
-                    if (i % j == 0) {
-                        primo = false;
-                        
-                    }
-                    
-                }
-                        
-                if (primo) {
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0) {
+                if (esPrimo(i)) {
                     contador++;
-                    
                 }
-                    
-
             }
-            
-            
-        } 
-        System.err.println(contador);
+        }
+
+        return contador;
     }
-    
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduce un número entero: ");
+        int n = sc.nextInt(); // Aquí se guarda el número que escriba el usuario
+
+        System.out.println("El número de divisores primos de " + n + " es: "
+                + numDivisoresPrimos(n));
+
+        sc.close();
+    }
 }
