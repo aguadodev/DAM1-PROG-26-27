@@ -8,6 +8,8 @@ public class Capicua {
     public static boolean esCapicua(long n) {
         long digito1 = n;
         long digito2 = n;
+        long digito3 = n;
+        long digito4 = n;
 
         if (n < 10) {
             return false;
@@ -19,10 +21,12 @@ public class Capicua {
             digito2 %= 10;
         } else {
             digito1 /= 1000;
-            digito2 %= 10;
+            digito2 = n / 100 % 10;
+            digito3 = n / 10 % 10;
+            digito4 %= 10;
         }
 
-        if (digito1 == digito2) {
+        if (n < 1000 && digito1 == digito2 || digito1 == digito4 && digito2 == digito3) {
             return true;
         } else {
             return false;
