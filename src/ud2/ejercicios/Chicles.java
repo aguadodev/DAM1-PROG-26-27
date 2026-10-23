@@ -3,9 +3,13 @@ package ud2.ejercicios;
 public class Chicles {
 
     public static int totalChicles(int chiclesComprados, int envoltoriosParaRegalo, int chiclesRegalo) {
-        int totalChicles = 0;
+        if (chiclesComprados < 0 || envoltoriosParaRegalo < 0 || chiclesRegalo < 0 || chiclesRegalo > envoltoriosParaRegalo) {
+            // Si hay casos especiales de entrada inválida termino con una "guard clause"
+            return -1;
+        } 
 
-        // TODO Programar método ....
+        int totalChicles = 0;
+        // TODO Programar casos generales
 
         return totalChicles;
     }
