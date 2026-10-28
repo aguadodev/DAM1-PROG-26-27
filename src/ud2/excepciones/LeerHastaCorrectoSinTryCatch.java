@@ -12,7 +12,6 @@ public class LeerHastaCorrectoSinTryCatch {
             System.out.println(str + " NO es un entero");            
         }
         
-        System.out.println("es un entero");
         numero = sc.nextInt();
         
         System.out.println("Número introducido: " + numero);

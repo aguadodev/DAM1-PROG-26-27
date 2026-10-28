@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 
 public class LeerHastaCorrectoJOptionPane {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int numero = 0;
         boolean lecturaCorrecta = false;
         do {

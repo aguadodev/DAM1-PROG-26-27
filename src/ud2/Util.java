@@ -1,6 +1,19 @@
 package ud2;
 
+import java.util.Scanner;
+
 public class Util {
+    // ENTRADA DE DATOS
+    public static int leerEntero(Scanner sc, String msg) {
+        System.out.print(msg);
+        while (!sc.hasNextInt()) {
+            sc.nextLine();
+            System.out.println("Entrada no válida. Escribe un número entero");            
+        }
+
+        return sc.nextInt();
+    }
+
     // FECHAS
     public static boolean esBisiesto(int anho) {
         return anho % 400 == 0 || anho % 4 == 0 && anho % 100 != 0;
