@@ -14,6 +14,16 @@ public class Util {
         return sc.nextInt();
     }
 
+    public static double leerDouble(Scanner sc, String msg) {
+        System.out.print(msg);
+        while (!sc.hasNextDouble()) {
+            sc.nextLine();
+            System.out.println("Entrada no válida. Escribe un número (separador decimal ,)");            
+        }
+
+        return sc.nextDouble();
+    }    
+
     // FECHAS
     public static boolean esBisiesto(int anho) {
         return anho % 400 == 0 || anho % 4 == 0 && anho % 100 != 0;
