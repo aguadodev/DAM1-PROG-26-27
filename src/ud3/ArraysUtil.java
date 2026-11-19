@@ -1,11 +1,12 @@
 package ud3;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class ArraysUtil {
-
+    /***************/
     /* INICIALIZAR */
+    /***************/
+
     /**
      * Inicializar array de longitud N con números enteros aleatorios entre
      * rndInicio y rndFin inclusives.
@@ -61,8 +62,9 @@ public class ArraysUtil {
 
         return tAux;
     }
-
+    /**********************/
     /* INSERTAR ELEMENTOS */
+    /**********************/
     /**
      * 
      * @param t
@@ -103,7 +105,14 @@ public class ArraysUtil {
 
         return tAux;
     }
-
+    /**********************/
+    /* ELIMINAR ELEMENTOS */
+    /**********************/  
+    /**
+     * Insertar un valor al final
+     * @param t
+     * @return
+     */  
     static int[] eliminarFinal(int[] t) {
         int[] tAux = new int[t.length - 1];
         for (int i = 0; i < tAux.length; i++)
@@ -111,19 +120,106 @@ public class ArraysUtil {
         return tAux;
     }
 
+    /**
+     * Insertar un valor al inicio
+     * @param t
+     * @return
+     */
     static int[] eliminarInicial(int[] t) {
         int[] tAux = new int[t.length - 1];
         for (int i = 0; i < tAux.length; i++)
             tAux[i] = t[i + 1];
         return tAux;
-    }    
-
-    static int[] eliminarPorValor(int[] t, int valor) {
-        
     }
 
+    /**
+     * Eliminar el elemento que ocupa la posición indicada. Los elementos
+     * posteriores deben desplazarse una posición a la izquierda.
+     * 
+     * @param t
+     * @param pos
+     * @return Si posicion es inválida devuelve el mismo array de entrada.
+     */
+    static int[] eliminarPorPosicion(int[] t, int pos) {
+        int[] tAux = new int[t.length - 1];
+        if (pos < 0 || pos >= t.length)
+            return t;
 
+        for (int i = 0; i < pos; i++)
+            tAux[i] = t[i];
+        for (int i = pos; i < t.length - 1; i++)
+            tAux[i] = t[i + 1];
 
+        return tAux;
+    }
+
+    /**
+     * Eliminar la primera aparición del valor indicado. Si no existe, devolver el array original.
+     * @param t
+     * @param valor
+     * @return
+     */
+    static int[] eliminarPorValor(int[] t, int valor) {
+        return eliminarPorPosicion(t, buscar(t, valor));
+    }
+
+    /**
+     * Eliminar todas las apariciones del valor indicado.
+     * @param t
+     * @param valor
+     * @return
+     */
+    static int[] eliminarValores(int[] t, int valor) {
+        int[] tAux = new int[t.length];
+        int cont = 0;
+
+        for (int i = 0; i < tAux.length; i++) {
+            if (t[i] == valor) {
+                cont++;
+            } else {
+                tAux[i - cont] = t[i];
+            }
+        }
+        int[] tAux2 = new int[t.length - cont];
+        for (int i = 0; i < tAux2.length; i++) {
+            tAux2[i] = tAux[i];
+        }
+
+        return tAux2;
+    }
+
+    /**
+     * Eliminar todas las apariciones del valor indicado.
+     * @param t
+     * @param valor
+     * @return
+     */
+    static int[] eliminarValores2(int[] t, int valor) {
+        int[] tAux = t;
+        while (buscar(tAux, valor) != -1)
+            tAux = eliminarPorValor(tAux, valor);
+        return tAux;
+    }
+
+    /**********************/
+    /* BUSCAR Y CONSULTAR */
+    /**********************/
+
+    /**
+     * Buscar de forma secuencial en la tabla t el valor clave. En caso de
+     * encontrarlo, devuelve en qué posición lo encuentra, y en caso contrario,
+     * devolverá -1.
+     * 
+     * @param t
+     * @param clave
+     * @return
+     */
+    public static int buscar(int t[], int clave) {
+        for (int i = 0; i < t.length; i++)
+            if (t[i] == clave)
+                return i;
+        return -1;
+    }
 
     /**
      * Obtener el máximo de un array
@@ -132,7 +228,6 @@ public class ArraysUtil {
      * @return máximo
      */
     static int maximo(int[] numeros) {
-        // Calcular el máximo
         int maximo = Integer.MIN_VALUE;
         for (int numero : numeros) {
             if (numero > maximo)
@@ -141,8 +236,17 @@ public class ArraysUtil {
         return maximo;
     }
 
+
+
+    /*******************************************************/    
+    /* PROCESAR: OPERACIONES ESTADÍSTICAS Y DE AGREGACIÓN  */
+    /*******************************************************/    
+    /**
+     * Obtener la suma de elementos de un array.
+     * @param numeros
+     * @return
+     */
     static int suma(int[] numeros) {
-        // Calcular Suma
         int suma = 0;
         for (int numero : numeros) {
             suma += numero;
@@ -150,13 +254,29 @@ public class ArraysUtil {
         return suma;
     }
 
+    /*******************************************/    
+    /* MODIFICACIÓN Y TRANSFORMACIÓN DE ARRAYS */
+    /*******************************************/    
+    static int[] concatenar(int[] t1, int[] t2) {
+        return null;
+    }
+
+
+    /***************************************/    
+    /* ORDENACIÓN Y COMPROBACIÓN DEL ORDEN */
+    /***************************************/    
+
+
+
+    /***********************************/    
+    /* PROGRAMA PRINCIPAL PARA PRUEBAS */
+    /***********************************/    
+
     public static void main(String[] args) {
         int[] numeros = arrayAleatorio(10, 10, 20);
         imprimir(numeros);
-        numeros = insertarEnPosicion(numeros, -1, 3);
-        imprimir(numeros);
-        numeros = eliminarInicial(numeros);
-        imprimir(numeros);
+        // System.out.println("Posición del 15: " + buscar(numeros, 15));
+        imprimir(eliminarValores(numeros, 15));
 
     }
 
