@@ -28,8 +28,17 @@ public class ArraysUtil {
         return numeros;
     }
 
-    /* IMPRIMIR */
+    //Inicializar array desde teclado
+    //static int[] leerDeTeclado(int n)    
 
+    /************/
+    /* IMPRIMIR */
+    /************/
+
+    /**
+     * Imprimir array
+     * @param t
+     */
     public static void imprimir(int[] t) {
         for (int e : t)
             System.out.print(e + " ");
@@ -105,11 +114,19 @@ public class ArraysUtil {
 
         return tAux;
     }
+
+    //Insertar un valor en un array cuyos elementos están ordenados de menor a mayor, manteniendo el orden.
+    //static int[] insertarOrdenado(int[] t, int valor)
+
+    //Insertar un valor al final únicamente si todavía no existe en el array. Si ya existe, devolver el array original.
+    //static int[] insertarSinRepetir(int[] t, int valor)
+
+
     /**********************/
     /* ELIMINAR ELEMENTOS */
     /**********************/  
     /**
-     * Insertar un valor al final
+     * Eliminar el valor final
      * @param t
      * @return
      */  
@@ -121,7 +138,7 @@ public class ArraysUtil {
     }
 
     /**
-     * Insertar un valor al inicio
+     * Eliminar el valor inicial
      * @param t
      * @return
      */
@@ -141,9 +158,10 @@ public class ArraysUtil {
      * @return Si posicion es inválida devuelve el mismo array de entrada.
      */
     static int[] eliminarPorPosicion(int[] t, int pos) {
-        int[] tAux = new int[t.length - 1];
         if (pos < 0 || pos >= t.length)
             return t;
+        
+        int[] tAux = new int[t.length - 1];
 
         for (int i = 0; i < pos; i++)
             tAux[i] = t[i];
@@ -201,9 +219,15 @@ public class ArraysUtil {
         return tAux;
     }
 
+    //Eliminar los elementos repetidos, conservando la primera aparición de cada valor y respetando el orden original.
+    //static int[] eliminarDuplicados(int[] t)    
+
     /**********************/
     /* BUSCAR Y CONSULTAR */
     /**********************/
+
+    //Indicar si un valor existe en el array.
+    //static boolean contiene(int[] t, int valor)
 
     /**
      * Buscar de forma secuencial en la tabla t el valor clave. En caso de
@@ -221,6 +245,13 @@ public class ArraysUtil {
         return -1;
     }
 
+    //Buscar desde el final. Similar al anterior pero buscando por el final.
+    //static int buscarUltimo(int t[], int clave)
+
+    //Contar número de veces que aparece un valor
+    //static int contarApariciones(int[] t, int valor)
+
+
     /**
      * Obtener el máximo de un array
      * 
@@ -236,7 +267,8 @@ public class ArraysUtil {
         return maximo;
     }
 
-
+    //Obtener el mínimo de un array
+    //static int minimo(int[] numeros)
 
     /*******************************************************/    
     /* PROCESAR: OPERACIONES ESTADÍSTICAS Y DE AGREGACIÓN  */
@@ -254,17 +286,74 @@ public class ArraysUtil {
         return suma;
     }
 
+    //Obtener la media
+    //static int media(int[] numeros)
+
+    //Devolver cuántos elementos son pares.
+    //static int contarPares(int[] t)	
+
+    //Devolver cuántos elementos son impares.
+    //static int contarImpares(int[] t)	
+
+    //Devolver cuántos elementos son positivos.
+    //static int contarPositivos(int[] t)	
+
+    //Indicar si todos los elementos son positivos.
+    //static boolean todosPositivos(int[] t)	
+
+    //Indicar si existe al menos un elemento negativo.
+    //static boolean algunoNegativo(int[] t)	
+
+    //Devolver un nuevo array que contenga únicamente los elementos pares, conservando su orden.
+    //static int[] filtrarPares(int[] t)	
+
+    //Devolver un nuevo array con los elementos mayores que el límite indicado.
+    //static int[] filtrarMayoresQue(int[] t, int limite)
+
+
     /*******************************************/    
     /* MODIFICACIÓN Y TRANSFORMACIÓN DE ARRAYS */
     /*******************************************/    
-    static int[] concatenar(int[] t1, int[] t2) {
-        return null;
-    }
+    //Sustituir el elemento de una posición determinada por un nuevo valor. Modifica el array original.
+    //static void modificarValor(int[] t, int pos, int valor)	
+
+    //Intercambiar los elementos de dos posiciones del array.
+    //static void intercambiar(int[] t, int pos1, int pos2)	
+
+    //Devolver un nuevo array con los elementos en orden inverso.
+    //static int[] invertir(int[] t)	
+
+    //Devolver una copia independiente del array original.
+    //static int[] copiar(int[] t)	
+
+    //Devolver un nuevo array que contenga primero los elementos de t1 y después los de t2.
+    //static int[] concatenar(int[] t1, int[] t2)	
+
+    //Devolver un nuevo array alternando los elementos de ambos arrays. Si tienen distinta longitud, añadir al final los elementos restantes del más largo.
+    //static int[] intercalar(int[] t1, int[] t2)	
+
+    //Devolver un nuevo array con los elementos comprendidos entre las posiciones indicadas, ambas incluidas.
+    //static int[] subArray(int[] t, int inicio, int fin)
+
 
 
     /***************************************/    
     /* ORDENACIÓN Y COMPROBACIÓN DEL ORDEN */
     /***************************************/    
+    //Comprobar si los elementos están ordenados de menor a mayor.
+    //static boolean estaOrdenado(int[] t)	
+
+    //Comprobar si los elementos están ordenados de mayor a menor.
+    //static boolean estaOrdenadoDescendente(int[] t)	
+
+    //Ordenar el array de menor a mayor utilizando el algoritmo de la burbuja. Modifica el array original.
+    //static void ordenarBurbuja(int[] t)	
+
+    //Ordenar el array de menor a mayor utilizando el algoritmo de selección. Modifica el array original.
+    //static void ordenarSeleccion(int[] t)	
+
+    //Ordenar el array de menor a mayor utilizando el algoritmo de inserción directa. Modifica el array original.
+    //static void ordenarInsercion(int[] t)
 
 
 
