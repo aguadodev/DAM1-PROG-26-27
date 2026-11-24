@@ -116,7 +116,17 @@ public class ArraysUtil {
     }
 
     //Insertar un valor en un array cuyos elementos están ordenados de menor a mayor, manteniendo el orden.
-    //static int[] insertarOrdenado(int[] t, int valor)
+    static int[] insertarOrdenado(int[] t, int valor) {
+        int pos = 0;
+
+        if (t.length != 0) {
+            while (t[pos] < valor) {
+                pos++;
+            }
+        }
+
+        return insertarEnPosicion(t, valor, pos);
+    }
 
     //Insertar un valor al final únicamente si todavía no existe en el array. Si ya existe, devolver el array original.
     //static int[] insertarSinRepetir(int[] t, int valor)
@@ -245,6 +255,8 @@ public class ArraysUtil {
         return -1;
     }
 
+
+
     //Buscar desde el final. Similar al anterior pero buscando por el final.
     //static int buscarUltimo(int t[], int clave)
 
@@ -341,13 +353,33 @@ public class ArraysUtil {
     /* ORDENACIÓN Y COMPROBACIÓN DEL ORDEN */
     /***************************************/    
     //Comprobar si los elementos están ordenados de menor a mayor.
-    //static boolean estaOrdenado(int[] t)	
+    static boolean estaOrdenado(int[] t) {
+        if (t.length < 2)
+            return true;
+
+        for (int i = 1; i < t.length; i++)
+            if (t[i-1] > t[i])
+                return false;        
+
+        return true;
+    }
 
     //Comprobar si los elementos están ordenados de mayor a menor.
     //static boolean estaOrdenadoDescendente(int[] t)	
 
     //Ordenar el array de menor a mayor utilizando el algoritmo de la burbuja. Modifica el array original.
-    //static void ordenarBurbuja(int[] t)	
+    public static void ordenarBurbuja(int[] A) {
+        int i, j, aux;
+        for (i = 0; i < A.length - 1; i++) {
+            for (j = 0; j < A.length - i - 1; j++) {                                                              
+                if (A[j + 1] < A[j]) {
+                    aux = A[j + 1];
+                    A[j + 1] = A[j];
+                    A[j] = aux;
+                }
+            }
+        }
+    }    
 
     //Ordenar el array de menor a mayor utilizando el algoritmo de selección. Modifica el array original.
     //static void ordenarSeleccion(int[] t)	
@@ -362,6 +394,15 @@ public class ArraysUtil {
     /***********************************/    
 
     public static void main(String[] args) {
+        int[] numerosOrdenado = arrayAleatorio(1000, 1, 100);
+        ordenarBurbuja(numerosOrdenado);
+
+        imprimir(numerosOrdenado);
+
+
+
+        System.out.println(estaOrdenado(numerosOrdenado));
+
         int[] numeros = arrayAleatorio(10, 10, 20);
         imprimir(numeros);
         // System.out.println("Posición del 15: " + buscar(numeros, 15));
