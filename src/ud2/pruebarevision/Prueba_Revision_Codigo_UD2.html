@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prueba de revisión de código UD2</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#fff; --ink:#1b1f24; --muted:#5b6470; --line:#d5dae1;
+  --head:#eef1f5; --code:#f1f3f6; --accent:#1f5fbf; --note:#fff3e0; --note-line:#e0a050;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181c; --card:#1e2227; --ink:#e6e9ed; --muted:#a2abb6; --line:#363c44;
+    --head:#262b31; --code:#262b31; --accent:#6ea2ff; --note:#3a2a17; --note-line:#a8743a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181c; --card:#1e2227; --ink:#e6e9ed; --muted:#a2abb6; --line:#363c44;
+  --head:#262b31; --code:#262b31; --accent:#6ea2ff; --note:#3a2a17; --note-line:#a8743a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px}
+.meta{color:var(--muted);margin:0 0 20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:0 0 20px}
+h2{font-size:21px;margin:0 0 2px}
+h2 .pts{color:var(--muted);font-weight:400;font-size:16px}
+.fichero{color:var(--muted);margin:0 0 12px;font-size:14.5px}
+h3{font-size:17px;margin:22px 0 6px}
+h3 .pts{color:var(--muted);font-weight:400}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(--code);padding:1px 5px;border-radius:4px}
+pre{background:var(--code);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:10px 0;line-height:1.45}
+pre code{background:none;padding:0;font-size:14px}
+.nota{background:var(--note);border-left:4px solid var(--note-line);border-radius:6px;padding:10px 14px;margin:12px 0}
+.errores{font-weight:700}
+table{border-collapse:collapse;margin:10px 0;width:100%}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+th{background:var(--head);font-size:14.5px}
+td.c,th.c{text-align:center}
+nav{margin:0 0 20px;font-size:15px}
+nav a{color:var(--accent);margin-right:14px;white-space:nowrap}
+@media print{
+  body{background:#fff;color:#000}
+  section{border:0;padding:0;break-inside:auto}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>UD2 · Prueba de revisión de código</h1>
+<p class="meta">Recuperación / subida de nota · <strong>1 h 45 min</strong> · 4 ejercicios de 2,5 puntos · <strong>Sin IA ni internet.</strong> Puedes usar el IDE, ejecutar y depurar.</p>
+
+<nav>
+  <a href="#entrega">Entrega</a>
+  <a href="#ej1">1 · Control de calidad</a>
+  <a href="#ej2">2 · Rebaja de la tarifa</a>
+  <a href="#ej3">3 · Días sin lluvia</a>
+  <a href="#ej4">4 · Distancia GPS</a>
+</nav>
+
+<section>
+  <h2>Situación</h2>
+  <p>Un compañero ha pedido a un asistente de IA que programe cuatro ejercicios. Todos compilan, pero <strong>ninguno cumple del todo su enunciado</strong>. Tu trabajo es el de quien revisa el código antes de darlo por bueno:</p>
+  <ul>
+    <li><strong>encontrar</strong> cada error,</li>
+    <li><strong>demostrarlo</strong> con una entrada concreta (salida esperada frente a salida obtenida),</li>
+    <li><strong>explicar</strong> por qué ocurre y</li>
+    <li><strong>corregirlo</strong>.</li>
+  </ul>
+</section>
+
+<section id="entrega">
+  <h2>Entrega</h2>
+  <ol>
+    <li>Copia la carpeta <code>ud2/pruebarevision/codigo</code> a tu paquete <code>ud2.pruebarevision.&lt;tu_usuario&gt;</code> y cambia la línea <code>package</code> de cada fichero.</li>
+    <li>Corrige el código <strong>en esos ficheros</strong>. Marca cada línea cambiada con un comentario <code>// CORREGIDO: explicación breve</code>.</li>
+    <li>Abre la <strong>hoja de respuestas</strong> <code>Hoja_Respuestas_Prueba_UD2.html</code> (está en la carpeta que has copiado) con doble clic desde el explorador de archivos. Escribe tu usuario y rellena sus tablas.</li>
+    <li>Pulsa <strong>Guardar RESPUESTAS.md</strong> y guarda el fichero en tu carpeta <code>ud2/pruebarevision/&lt;tu_usuario&gt;</code>. Hazlo de vez en cuando, no solo al final. <strong>Lo que se corrige es ese fichero.</strong></li>
+  </ol>
+  <p>Para cada error, la hoja te pide:</p>
+  <table>
+    <tr><th class="c">Línea</th><th>Qué falla y por qué</th><th>Entrada que lo demuestra</th><th>Salida esperada</th><th>Salida obtenida</th></tr>
+  </table>
+  <div class="nota">Un error explicado sin una entrada que lo demuestre vale <strong>como mucho la mitad</strong>. Calcula a mano la salida esperada <strong>antes</strong> de ejecutar.</div>
+</section>
+
+<section id="ej1">
+  <h2>Ejercicio 1 · Control de calidad <span class="pts">(2,5)</span></h2>
+  <p class="fichero"><code>ControlCalidad.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir el programa.</strong> Una máquina revisa piezas una a una. El programa lee un <code>1</code> (pieza correcta) o un <code>0</code> (pieza defectuosa) por cada pieza. La revisión termina cuando:</p>
+  <ul>
+    <li>aparecen <strong>3 piezas defectuosas seguidas</strong>, o</li>
+    <li>se han revisado <strong>25 piezas</strong>.</li>
+  </ul>
+  <p>Al terminar, muestra cuántas piezas se han revisado, cuántas son correctas y el porcentaje de piezas correctas con 2 decimales. Después indica <code>Lote APTO</code> si el porcentaje <strong>supera el 80 %</strong>, y <code>Lote NO APTO</code> en caso contrario.</p>
+  <p>Ejemplo correcto:</p>
+<pre><code>Entrada: 1 1 0 1 1 1 0 0 0
+Piezas revisadas: 9
+Piezas correctas: 5
+Porcentaje de piezas correctas: 55,56%
+Lote NO APTO</code></pre>
+
+  <p class="errores">El programa tiene 4 errores.</p>
+  <table>
+    <tr><th>Apartado</th><th class="c">Puntos</th></tr>
+    <tr><td>Cada error: explicación correcta (0,25) + entrada que lo demuestra (0,25)</td><td class="c">4 × 0,5 = 2,0</td></tr>
+    <tr><td>Programa corregido que funciona en todos los casos</td><td class="c">0,5</td></tr>
+  </table>
+  <div class="nota">Pista: para algún error necesitarás una entrada con 25 piezas.</div>
+</section>
+
+<section id="ej2">
+  <h2>Ejercicio 2 · Rebaja de la tarifa <span class="pts">(2,5)</span></h2>
+  <p class="fichero"><code>RebajaTarifa.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir la función.</strong></p>
+<pre><code>public static double rebaja(double factura, double minimo)</code></pre>
+  <p>La compañía eléctrica aplica una rebaja del <strong>5 %</strong> a la factura, pero la factura rebajada <strong>no puede quedar por debajo de <code>minimo</code></strong>. La función <strong>devuelve el importe de la rebaja</strong> (no la factura final):</p>
+  <ul>
+    <li>Si la factura menos el 5 % queda por debajo del mínimo, la rebaja es solo lo necesario para dejarla <strong>justo en el mínimo</strong>.</li>
+    <li>Si la factura ya es <strong>menor o igual</strong> que el mínimo, la rebaja es 0.</li>
+    <li>Si <strong>alguno</strong> de los dos argumentos es negativo, devuelve 0.</li>
+  </ul>
+  <p>El programa principal pide los dos importes. Si el usuario escribe algo que no es un número, muestra un aviso y <strong>vuelve a pedirlo</strong>. Después muestra la rebaja y la factura final con 2 decimales.</p>
+
+  <h3>A) Diseña las pruebas — antes de leer el código <span class="pts">(1,0)</span></h3>
+  <p>En la hoja de respuestas, rellena <strong>al menos 7 casos de prueba</strong> de la función: <code>factura</code>, <code>minimo</code>, rebaja esperada y qué situación comprueba.</p>
+  <p>Se valora que cubras <strong>situaciones distintas</strong>, sobre todo los límites. Diez casos de la misma situación valen lo mismo que uno.</p>
+
+  <h3>B) Encuentra y corrige los errores <span class="pts">(1,5)</span></h3>
+  <p>Ejecuta tus casos con el código recibido. Completa en la misma tabla el <strong>resultado obtenido</strong> y marca los que fallan.</p>
+  <p><span class="errores">El código tiene 5 errores: 4 en la función y 1 en el <code>main</code>.</span> Para cada uno, rellena la tabla de errores y corrígelo (0,3 cada uno).</p>
+  <div class="nota">Si alguno de tus casos no detecta un error que sí has encontrado, añade el caso que falta. Eso también es aprender a probar.</div>
+</section>
+
+<section id="ej3">
+  <h2>Ejercicio 3 · Días sin lluvia <span class="pts">(2,5)</span></h2>
+  <p class="fichero"><code>DiasSinLluvia.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir el programa.</strong> Se leen los litros de lluvia de cada día (enteros ≥ 0) hasta un <code>-1</code>, que no es un día. El primer valor es el día 1. El programa muestra, separados por un espacio:</p>
+  <ul>
+    <li>el <strong>día en que empieza</strong> la racha más larga de días seguidos sin lluvia (0 litros), y</li>
+    <li>su <strong>duración</strong>.</li>
+  </ul>
+  <p>Si hay empate, se muestra la <strong>primera</strong> racha. Si no hay ningún día seco, se muestra <code>0 0</code>.</p>
+<pre><code>Entrada: 4 0 0 0 2 0 -1     Salida: 2 3</code></pre>
+
+  <h3>A) Traza <span class="pts">(1,0)</span></h3>
+  <p><strong>Sin ejecutar el programa</strong>, completa en la hoja el valor de las variables <strong>al final de cada vuelta</strong> del bucle para la entrada <code>3 0 0 5 0 0 1 0 -1</code>. Después indica qué escribe el programa y qué debería escribir.</p>
+  <p>Variables de la tabla: <code>litros</code>, <code>dia</code>, <code>rachaActual</code>, <code>inicioActual</code>, <code>mejorRacha</code>, <code>inicioMejor</code>.</p>
+
+  <h3>B) Errores <span class="pts">(1,0)</span></h3>
+  <p><span class="errores">El programa tiene 2 errores.</span> La traza te habrá descubierto uno. Para cada error, rellena la tabla de errores (0,5 cada uno).</p>
+
+  <h3>C) Corrección <span class="pts">(0,5)</span></h3>
+  <p>Corrige el programa. Debe funcionar con tus entradas y con la del ejemplo.</p>
+</section>
+
+<section id="ej4">
+  <h2>Ejercicio 4 · Distancia GPS <span class="pts">(2,5)</span></h2>
+  <p class="fichero"><code>DistanciaGPS.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir la función.</strong></p>
+<pre><code>public static double distancia(double lat1, double lon1, double lat2, double lon2)</code></pre>
+  <p>Recibe las coordenadas <strong>en grados</strong> y devuelve la distancia <strong>en kilómetros</strong> con la fórmula de Haversine (R = 6371 km):</p>
+<pre><code>a = sin²(Δφ/2) + cos φ1 · cos φ2 · sin²(Δλ/2)
+c = 2 · atan2(√a, √(1−a))
+d = R · c</code></pre>
+  <p>Aquí φ son las latitudes y λ las longitudes, en <strong>radianes</strong>.</p>
+
+  <h3>A) Errores <span class="pts">(1,2)</span></h3>
+  <p><span class="errores">La función tiene 3 errores.</span> Rellena la tabla de errores y corrígelos (0,4 cada uno). En este ejercicio, «la entrada que lo demuestra» puede ser un par de puntos con una distancia conocida o fácil de razonar.</p>
+
+  <h3>B) ¿Cómo sabrías que está bien sin conocer la fórmula? <span class="pts">(0,7)</span></h3>
+  <p>Propón <strong>3 comprobaciones</strong> que permitan detectar una función de distancia incorrecta <strong>sin mirar su código</strong>. Para cada una, indica los puntos de entrada y el resultado esperado o la propiedad que debe cumplir. Al menos una debe ser distinta de «comparar con una distancia que busco en un mapa».</p>
+
+  <h3>C) Pídeselo bien a la IA <span class="pts">(0,6)</span></h3>
+  <p>Escribe la petición (<em>prompt</em>) que le harías a un asistente de IA para que genere esta función <strong>sin estos errores</strong>. Debe dejar claro todo lo que el código recibido no respetó. Después escribe en una línea qué harías con la respuesta <strong>antes</strong> de darla por buena.</p>
+</section>
+
+<div class="nota"><strong>Antes de terminar:</strong> comprueba que <code>RESPUESTAS.md</code> está en tu carpeta <code>ud2/pruebarevision/&lt;tu_usuario&gt;</code> junto a tus <code>.java</code> corregidos.</div>
+
+</main>
+</body>
+</html>

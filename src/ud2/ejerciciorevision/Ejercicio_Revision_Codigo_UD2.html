@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio de revisión de código UD2</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#fff; --ink:#1b1f24; --muted:#5b6470; --line:#d5dae1;
+  --head:#eef1f5; --code:#f1f3f6; --accent:#1f5fbf; --note:#fff3e0; --note-line:#e0a050;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181c; --card:#1e2227; --ink:#e6e9ed; --muted:#a2abb6; --line:#363c44;
+    --head:#262b31; --code:#262b31; --accent:#6ea2ff; --note:#3a2a17; --note-line:#a8743a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181c; --card:#1e2227; --ink:#e6e9ed; --muted:#a2abb6; --line:#363c44;
+  --head:#262b31; --code:#262b31; --accent:#6ea2ff; --note:#3a2a17; --note-line:#a8743a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px}
+.meta{color:var(--muted);margin:0 0 20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:0 0 20px}
+h2{font-size:21px;margin:0 0 2px}
+.fichero{color:var(--muted);margin:0 0 12px;font-size:14.5px}
+h3{font-size:17px;margin:22px 0 6px}
+p{margin:8px 0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(--code);padding:1px 5px;border-radius:4px}
+pre{background:var(--code);border-radius:8px;padding:12px 14px;overflow-x:auto;margin:10px 0;line-height:1.45}
+pre code{background:none;padding:0;font-size:14px}
+.nota{background:var(--note);border-left:4px solid var(--note-line);border-radius:6px;padding:10px 14px;margin:12px 0}
+.errores{font-weight:700}
+table{border-collapse:collapse;margin:10px 0;width:100%}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+th{background:var(--head);font-size:14.5px}
+nav{margin:0 0 20px;font-size:15px}
+nav a{color:var(--accent);margin-right:14px;white-space:nowrap}
+@media print{
+  body{background:#fff;color:#000}
+  section{border:0;padding:0}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>UD2 · Ejercicio de revisión de código</h1>
+<p class="meta"><strong>Para qué sirve:</strong> familiarizarte con el formato de la prueba de revisión de código (para recuperar o subir nota). <strong>Este ejercicio no puntúa.</strong><br>
+<strong>Tiempo orientativo:</strong> 50 minutos · <strong>Sin IA.</strong> Puedes usar el IDE, ejecutar y depurar.</p>
+
+<nav>
+  <a href="#como">Cómo trabajar</a>
+  <a href="#ej1">1 · Estadística de notas</a>
+  <a href="#ej2">2 · Precio del parking</a>
+</nav>
+
+<section>
+  <h2>Cómo es la prueba</h2>
+  <p>Un compañero ha pedido a un asistente de IA que programe unos ejercicios. <strong>Todo compila, pero nada cumple del todo el enunciado.</strong> Tu trabajo es el de quien revisa el código antes de darlo por bueno:</p>
+  <ul>
+    <li><strong>encontrar</strong> cada error,</li>
+    <li><strong>demostrarlo</strong> con una entrada concreta (salida esperada frente a salida obtenida),</li>
+    <li><strong>explicar</strong> por qué ocurre y</li>
+    <li><strong>corregirlo</strong>.</li>
+  </ul>
+  <p>En la prueba de verdad habrá más ejercicios de este tipo, y también te pedirán diseñar casos de prueba, hacer una traza a mano y escribir una petición (<em>prompt</em>) para una IA. Aquí tienes un ejemplo de cada cosa.</p>
+</section>
+
+<section id="como">
+  <h2>Cómo trabajar</h2>
+  <p>Es el mismo procedimiento que en la prueba, así que te sirve de ensayo.</p>
+  <ol>
+    <li>Copia la carpeta <code>ud2/ejerciciorevision/codigo</code> a tu paquete <code>ud2.ejerciciorevision.&lt;tu_usuario&gt;</code> y cambia la línea <code>package</code> de cada <code>.java</code>.</li>
+    <li><strong>Corrige el código en tu copia.</strong> Marca cada línea cambiada con <code>// CORREGIDO: explicación breve</code>. <strong>No cambies</strong> los nombres de las clases ni la firma de los métodos.</li>
+    <li>Abre la <strong>hoja de respuestas</strong> <code>Hoja_Respuestas_Ejercicio_UD2.html</code> (está en la carpeta que has copiado) con doble clic desde el explorador de archivos. Escribe tu usuario y rellena sus tablas.</li>
+    <li>Pulsa <strong>Guardar RESPUESTAS.md</strong> y guarda el fichero en tu carpeta <code>ud2/ejerciciorevision/&lt;tu_usuario&gt;</code>. Hazlo de vez en cuando, no solo al final.</li>
+  </ol>
+  <p>Para cada error, la hoja te pide:</p>
+  <table>
+    <tr><th>Línea</th><th>Qué falla y por qué</th><th>Entrada que lo demuestra</th><th>Salida esperada</th><th>Salida obtenida</th></tr>
+  </table>
+  <ul>
+    <li>Escribe las entradas tal como se las darías al programa, por ejemplo <code>7 4 5 10 -1</code>.</li>
+    <li>Copia las salidas de la consola tal cual. Si ocupan varias líneas, pulsa Intro dentro de la casilla.</li>
+    <li>Si no sabes algo, déjalo en blanco. Los errores puedes ponerlos en cualquier orden.</li>
+  </ul>
+  <div class="nota"><strong>Lo más importante:</strong> un error sin una entrada que lo demuestre vale como mucho la mitad. Se comprobará ejecutando <strong>tu entrada</strong> con el código recibido. Acostúmbrate a <strong>calcular a mano</strong> la salida esperada <strong>antes</strong> de ejecutar.</div>
+</section>
+
+<section id="ej1">
+  <h2>Ejercicio 1 · Estadística de notas</h2>
+  <p class="fichero"><code>EstadisticaNotas.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir el programa.</strong> Lee notas enteras de 0 a 10 hasta un <code>-1</code>, que no es una nota. Muestra:</p>
+  <ul>
+    <li>cuántas notas hay;</li>
+    <li>la <strong>media</strong> con 2 decimales;</li>
+    <li>la nota <strong>máxima</strong> y la <strong>mínima</strong>;</li>
+    <li>cuántos <strong>aprobados</strong> hay (nota <strong>mayor o igual que 5</strong>) y su porcentaje con 2 decimales;</li>
+    <li><code>GRUPO APROBADO</code> si el porcentaje de aprobados <strong>supera el 50 %</strong>, y <code>GRUPO NO APROBADO</code> en caso contrario.</li>
+  </ul>
+  <p>Si no se introduce ninguna nota (la primera ya es <code>-1</code>), solo muestra <code>No hay notas</code>.</p>
+
+  <h3>A) Traza</h3>
+  <p><strong>Sin ejecutar el programa</strong>, completa en la hoja el valor de las variables <strong>al final de cada vuelta</strong> del bucle para la entrada <code>7 4 5 10 -1</code>. Después escribe lo que mostrará el programa y lo que <strong>debería</strong> mostrar.</p>
+  <p>Variables de la tabla: <code>nota</code>, <code>cantidad</code>, <code>suma</code>, <code>maxima</code>, <code>minima</code>, <code>aprobados</code>.</p>
+
+  <h3>B) Errores</h3>
+  <p><span class="errores">El programa tiene 4 errores.</span> La traza te descubrirá algunos. Para cada uno, rellena una fila de la tabla de errores.</p>
+  <div class="nota">Pista: prueba también el caso más extremo posible.</div>
+
+  <h3>C) Corrección</h3>
+  <p>Corrige el programa y comprueba que funciona con tus entradas.</p>
+</section>
+
+<section id="ej2">
+  <h2>Ejercicio 2 · Precio del parking</h2>
+  <p class="fichero"><code>PrecioParking.java</code></p>
+
+  <p><strong>Enunciado que debía cumplir la función.</strong></p>
+<pre><code>public static double precioParking(int minutos)</code></pre>
+  <ul>
+    <li>Los <strong>primeros 15 minutos</strong> son gratis: con 15 minutos o menos, el precio es 0.</li>
+    <li>Si se pasa de 15 minutos, la <strong>primera hora</strong> (o fracción) cuesta <strong>2,00 €</strong>, y <strong>cada hora adicional</strong> (o fracción) cuesta <strong>1,50 €</strong>.</li>
+    <li>El precio <strong>nunca supera los 18,00 €</strong>, que es el máximo diario.</li>
+    <li>Si los minutos son <strong>negativos</strong>, devuelve <code>-1</code> para indicar un error.</li>
+  </ul>
+  <p>El programa principal pide los minutos. Si el usuario escribe algo que no es un número entero, muestra un aviso y <strong>vuelve a pedirlo</strong>. Después muestra el importe con 2 decimales, o <code>Tiempo no válido</code> si la función devuelve <code>-1</code>.</p>
+
+  <h3>A) Diseña las pruebas — antes de leer el código</h3>
+  <p>En la hoja de respuestas, rellena <strong>al menos 8 casos de prueba</strong> de la función: minutos, precio esperado y qué situación comprueba. Deja el «resultado obtenido» para el apartado B.</p>
+  <p>Piensa en los <strong>límites</strong>: ¿qué pasa justo en 15 minutos? ¿Y en 16? ¿Y con 60 minutos exactos o con 61? ¿Cuándo se alcanza el máximo de 18 €?</p>
+
+  <h3>B) Encuentra y corrige los errores</h3>
+  <p>Ejecuta tus casos con el código recibido. Completa en la misma tabla el <strong>resultado obtenido</strong> y marca los que fallan.</p>
+  <p><span class="errores">El código tiene 4 errores: 3 en la función y 1 en el <code>main</code>.</span> Rellena una fila de la tabla de errores por cada uno y corrígelos en el código.</p>
+  <div class="nota">Si alguno de tus casos no detecta un error que sí has encontrado, añade el caso que falta.</div>
+
+  <h3>C) Pídeselo bien a la IA</h3>
+  <p>Escribe la petición (<em>prompt</em>) que harías a un asistente de IA para que genere esta función <strong>sin estos errores</strong>. Debe dejar claras todas las reglas del enunciado, sobre todo las que el código recibido no respetó. Pide también que te dé casos de prueba.</p>
+</section>
+
+<div class="nota"><strong>Antes de terminar:</strong> comprueba que <code>RESPUESTAS.md</code> está en tu carpeta <code>ud2/ejerciciorevision/&lt;tu_usuario&gt;</code> junto a tus <code>.java</code> corregidos.</div>
+
+</main>
+</body>
+</html>
