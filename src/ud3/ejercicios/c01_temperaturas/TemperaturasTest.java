@@ -1,4 +1,4 @@
-package ud3.ejercicios.c01_temperaturas.xxx;
+package ud3.ejercicios.c01_temperaturas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
