@@ -16,7 +16,7 @@ public class ArraysUtil {
      * @param rndFin
      * @return Array generado.
      */
-    static int[] arrayAleatorio(int n, int rndInicio, int rndFin) {
+    public static int[] arrayAleatorio(int n, int rndInicio, int rndFin) {
         int[] numeros = new int[n];
         Random rnd = new Random();
 
@@ -255,7 +255,12 @@ public class ArraysUtil {
         return -1;
     }
 
-
+    public static int buscar(String t[], String clave) {
+        for (int i = 0; i < t.length; i++)
+            if (t[i] == clave)
+                return i;
+        return -1;
+    }
 
     //Buscar desde el final. Similar al anterior pero buscando por el final.
     //static int buscarUltimo(int t[], int clave)
@@ -353,7 +358,7 @@ public class ArraysUtil {
     /* ORDENACIÓN Y COMPROBACIÓN DEL ORDEN */
     /***************************************/    
     //Comprobar si los elementos están ordenados de menor a mayor.
-    static boolean estaOrdenado(int[] t) {
+    public static boolean estaOrdenado(int[] t) {
         if (t.length < 2)
             return true;
 
